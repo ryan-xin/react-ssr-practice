@@ -1,5 +1,6 @@
 {
   "name": "react-ssr-practice",
+  "description": "A React server-side rendering (SSR) sample project.",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
