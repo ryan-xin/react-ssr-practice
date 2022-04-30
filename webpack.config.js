@@ -10,8 +10,10 @@ module.exports = {
   mode: ("development" === process.env.NODE_ENV ? "development" : "production"),
 
   // entry files
-  entry: [
-    "./src/index.js", // react
+  entry: "development" === process.env.NODE_ENV ? [
+    "./src/index.dev.js",
+  ] : [
+    "./src/index.prod.js",
   ],
 
   // output files and chunks
