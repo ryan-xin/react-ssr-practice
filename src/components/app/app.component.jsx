@@ -1,9 +1,9 @@
 import * as React from "react";
-import { NavLink, S } from "react-router-dom";
+import { NavLink, Routes, Route } from "react-router-dom";
 
 // import child components
 import { Counter } from '../counter';
-// import { Post } from '../post';
+import { Post } from '../post';
 
 export class App extends React.Component {
   constructor() {
@@ -15,36 +15,32 @@ export class App extends React.Component {
   render() {
     return (
       <div className="ui-app">
-        <Counter name="Monica Geller" />
-        {/* <NavLink
-          className={isActive =>
-            isActive ? 'ui-app__navigation__link--active' : 'ui-app__navigation__link'
-          }
+        {/* <Counter name="Monica Geller" /> */}
+        <NavLink
+          className={({isActive}) => `ui-app__navigation__link${isActive ? "--active" : ""}`}
           to='/'
-          exact="true" // When true, the active class/style will only be applied if the location is matched exactly.
+          end={true}
         >Counter</NavLink>
 
         <NavLink
-          className={isActive =>
-            isActive ? 'ui-app__navigation__link--active' : 'ui-app__navigation__link'
-          }
+          className={({isActive}) => `ui-app__navigation__link${isActive ? "--active" : ""}`}
           to='/post'
-          exact="true"
-        >Post</NavLink> */}
+          end={true}
+        >Post</NavLink>
 
-      {/* <Switch>
-        <Route
-          path='/'
-          exact
-          render={ () => <Counter name='Monica Geller'/> } // Use "render" when using inline function
-        />
+        <Routes>
+          <Route
+            path='/'
+            exact
+            element={ <Counter name='Monica Geller'/> }
+          />
 
-        <Route
-          path='/post'
-          exact
-          component={ Post }
-        />
-      </Switch> */}
+          <Route
+            path='/post'
+            exact
+            element={ <Post /> }
+          />
+        </Routes>
       </div>
     );
   }
