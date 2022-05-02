@@ -8,25 +8,25 @@ export class Post extends React.Component {
         super();
 
         // component state
-        // if( props.staticContext ) {
-        //     this.state = {
-        //         isLoading: false,
-        //         title: props.staticContext.title,
-        //         description: props.staticContext.body,
-        //     };
-        // } else if( window.initial_state ) {
-        //     this.state = {
-        //         isLoading: false,
-        //         title: window.initial_state.title,
-        //         description: window.initial_state.body,
-        //     };
-        // } else {
+        if( props.staticContext ) {
+            this.state = {
+                isLoading: false,
+                title: props.staticContext.title,
+                description: props.staticContext.body,
+            };
+        } else if( window.initial_state ) {
+            this.state = {
+                isLoading: false,
+                title: window.initial_state.title,
+                description: window.initial_state.body,
+            };
+        } else {
             this.state = {
                 isLoading: true,
                 title: '',
                 description: '',
             };
-        // }
+        }
     }
 
     // fetch data
@@ -42,19 +42,19 @@ export class Post extends React.Component {
     }
 
     // when component mounts, fetch data
-    // componentDidMount() {
-    //     if( this.state.isLoading ) {
-    //         console.log( 'Post.componentDidMount()' );
+    componentDidMount() {
+        if( this.state.isLoading ) {
+            console.log( 'Post.componentDidMount()' );
 
-    //         Post.fetchData().then( data => {
-    //             this.setState( {
-    //                 isLoading: false,
-    //                 title: data.title,
-    //                 description: data.body,
-    //             } );
-    //         } );
-    //     }
-    // }
+            Post.fetchData().then( data => {
+                this.setState( {
+                    isLoading: false,
+                    title: data.title,
+                    description: data.body,
+                } );
+            } );
+        }
+    }
 
     render() {
         console.log( 'Post.render()' );
@@ -63,18 +63,18 @@ export class Post extends React.Component {
             <div className='ui-post'>
                 <p className='ui-post__title'>Post Widget</p>
 
-                {/* {
+                {
                     this.state.isLoading ? 'loading...' : (
                         <div className='ui-post__body'>
                             <p className='ui-post__body__title'>{ this.state.title }</p>
                             <p className='ui-post__body__description'>{ this.state.description }</p>
                         </div>
                     )
-                } */}
-                <div className='ui-post__body'>
+                }
+                {/* <div className='ui-post__body'>
                     <p className='ui-post__body__title'>Title</p>
                     <p className='ui-post__body__description'>Long description.</p>
-                </div>
+                </div> */}
             </div>
         );
     }
